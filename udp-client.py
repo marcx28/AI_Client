@@ -11,6 +11,9 @@ class UDPClient:
         self.server_ip = cfg['server-ip']
         self.server_port = cfg['server-port']
 
+    def send(self, byte_data):
+        self.socket.send(byte_data)
+
 
 if __name__ == "__main__":
     udp_client = UDPClient()
