@@ -30,7 +30,7 @@ class UDPClient:
 
         self.server_ip = cfg['server-ip']
         self.server_port = cfg['server-port']
-
+        self.bufferSize = 8196
         self.socket = None
 
         print(self.server_ip)
@@ -46,6 +46,13 @@ class UDPClient:
         print(f"sending {byte_data}")
         self.socket.sendto(byte_data, (self.server_ip, self.server_port))
 
+    def receive(self):
+        print("waiting for data")
+        data, addr = self.socket.recvfrom(self.bufferSize)
+        print(f"received from {addr}: {data}")
+        return data
 
 if __name__ == "__main__":
     udp_client = UDPClient(sys.argv[1:])
+    udp_client.send(b"Hello World")
+    data = udp_client.receive()
