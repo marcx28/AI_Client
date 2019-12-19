@@ -12,12 +12,12 @@ class UDPClient:
         self.server_ip = cfg['server-ip']
         self.server_port = cfg['server-port']
 
+        self.socket = None
         self.connect()
 
     def connect(self):
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         print("socket created")
-
 
     def send(self, byte_data):
         self.socket.send(byte_data)
