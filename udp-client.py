@@ -20,7 +20,8 @@ class UDPClient:
         print("socket created")
 
     def send(self, byte_data):
-        self.socket.send(byte_data)
+        print(f"sending {byte_data}")
+        self.socket.sendto(byte_data, (self.server_ip, self.server_port))
 
 
 if __name__ == "__main__":
